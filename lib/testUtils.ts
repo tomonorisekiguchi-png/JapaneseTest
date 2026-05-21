@@ -33,7 +33,7 @@ export function selectTestQuestions(bank: Question[], level: JLPTLevel): Questio
 
   // Reading — pick one passage at random, take up to 5 of its questions
   const readingAll = pool.filter((q) => q.type === "reading");
-  const passageIds = [...new Set(readingAll.map((q) => q.passageId).filter(Boolean) as string[])];
+  const passageIds = Array.from(new Set(readingAll.map((q) => q.passageId).filter(Boolean) as string[]));
   const chosenPassage = shuffle(passageIds)[0];
   const reading = readingAll.filter((q) => q.passageId === chosenPassage).slice(0, 5);
 
