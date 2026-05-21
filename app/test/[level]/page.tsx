@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { questions as allQuestions } from "@/data/questions";
 import { JLPTLevel, Question, TestResult, QuestionType } from "@/types";
@@ -28,8 +28,8 @@ const TYPE_ICONS: Record<QuestionType, string> = {
   listening: "L",
 };
 
-export default function TestPage({ params }: { params: Promise<{ level: string }> }) {
-  const { level } = use(params);
+export default function TestPage({ params }: { params: { level: string } }) {
+  const { level } = params;
   const router = useRouter();
   const jlptLevel = level as JLPTLevel;
 
